@@ -32,8 +32,6 @@ if (form && message) {
             return;
         }
 
-        // Пока имитация отправки.
-        // Позже подключим сервер, Telegram или почту.
         message.textContent = "Заявка отправлена! Мы свяжемся с вами.";
         message.className = "form__message form__message--ok";
         form.reset();
