@@ -57,7 +57,11 @@ class Particle {
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(147, 197, 253, ${this.opacity})`;
+        
+        // ЦВЕТ ЧАСТИЦ: Теплый янтарно-золотистый (#FBBF24 -> rgb(251, 191, 36))
+        // Используем прозрачность из opacity
+        ctx.fillStyle = `rgba(251, 191, 36, ${this.opacity})`; 
+        
         ctx.fill();
     }
 }
@@ -83,8 +87,10 @@ function connectParticles() {
             // Увеличенный радиус связи до 160
             if (dist < 160) {
                 ctx.beginPath();
-                // Чуть ярче линии (0.2 вместо 0.15)
-                ctx.strokeStyle = `rgba(147, 197, 253, ${(1 - dist / 160) * 0.2})`;
+                
+                // ЦВЕТ ЛИНИЙ СВЯЗИ: Тот же теплый оттенок, но бледнее
+                ctx.strokeStyle = `rgba(251, 191, 36, ${(1 - dist / 160) * 0.2})`;
+                
                 ctx.lineWidth = 0.6; 
                 ctx.moveTo(particles[a].x, particles[a].y);
                 ctx.lineTo(particles[b].x, particles[b].y);

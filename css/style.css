@@ -59,8 +59,11 @@ img {
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 24px;
     padding: 30px 30px;
+    
+    /* ИСПРАВЛЕНИЕ: Уменьшаем ширину секций для эффекта "карточек" */
+    max-width: 900px; 
+    
     margin: 24px auto;
-    max-width: 1140px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
@@ -76,19 +79,19 @@ img {
     padding: 14px 28px;
     border: 0;
     border-radius: 12px;
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
-    color: #ffffff;
+    background: linear-gradient(135deg, #fbbf24, #d97706); /* Золотой градиент под дерево */
+    color: #fffbeb;
     font: inherit;
     font-weight: 600;
     text-decoration: none;
     cursor: pointer;
-    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 4px 20px rgba(217, 119, 6, 0.4);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 28px rgba(37, 99, 235, 0.6);
+    box-shadow: 0 6px 28px rgba(217, 119, 6, 0.6);
 }
 
 /* ШАПКА */
@@ -133,7 +136,7 @@ img {
 }
 
 .nav a:hover {
-    color: #60a5fa;
+    color: #fbbf24; /* Акцентный цвет при наведении */
 }
 
 .burger {
@@ -240,7 +243,7 @@ img {
 .feature__num {
     font-size: 14px;
     font-weight: 700;
-    color: #60a5fa;
+    color: #fbbf24; /* Теплый тон для номеров */
     margin-bottom: 8px;
 }
 
@@ -283,7 +286,7 @@ img {
 }
 
 .form input:focus {
-    border-color: #3b82f6;
+    border-color: #fbbf24;
 }
 
 .form input::placeholder {
@@ -308,7 +311,7 @@ img {
 .footer {
     padding: 24px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
-    max-width: 1140px;
+    max-width: 900px; /* Синхронизируем с шириной секций */
     margin: 24px auto 0;
 }
 
@@ -335,7 +338,7 @@ img {
 }
 
 .footer a:hover {
-    color: #60a5fa;
+    color: #fbbf24;
 }
 
 /* МОБИЛЬНАЯ ВЕРСИЯ */
@@ -371,6 +374,7 @@ img {
         padding: 24px 20px;
         margin: 16px 12px;
         border-radius: 16px;
+        max-width: 100%; /* На мобилке занимаем всю доступную ширину минус отступы */
     }
 
     .hero {
