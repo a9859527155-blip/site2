@@ -44,23 +44,29 @@ img { max-width: 100%; display: block; }
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
 .glass:hover { border-color: rgba(255, 255, 255, 0.15); }
-.content { position: relative; z-index: 1; padding-top: 80px; } /* Отступ сверху для компенсации фиксированной шапки */
+.content { position: relative; z-index: 1; padding-top: 80px; }
 
-/* --- ШАПКА (ИСПРАВЛЕНО ЦЕНТРИРОВАНИЕ) --- */
+/* --- ШАПКА (ПРОСТАЯ И РАБОЧАЯ) --- */
 .header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 70px; /* Фиксированная высота */
-    display: flex;
-    align-items: center; /* Вертикальное центрирование содержимого */
-    justify-content: space-between; /* Распределение по краям */
-    padding: 0 40px;
-    background: rgba(11, 17, 32, 0.6);
+    height: 70px;
+    background: rgba(11, 17, 32, 0.8);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     z-index: 100;
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .logo {
@@ -71,8 +77,7 @@ img { max-width: 100%; display: block; }
     text-decoration: none;
     display: flex;
     gap: 2px;
-    order: 1;
-    line-height: 1; /* Чтобы текст не добавлял лишних пикселей по высоте */
+    line-height: 1;
 }
 
 .logo span {
@@ -91,8 +96,7 @@ img { max-width: 100%; display: block; }
 .nav {
     display: flex;
     gap: 30px;
-    order: 2;
-    align-items: center; /* Центрируем пункты меню по вертикали */
+    align-items: center;
 }
 
 .nav a {
@@ -102,7 +106,7 @@ img { max-width: 100%; display: block; }
     font-size: 15px;
     transition: color 0.3s;
     position: relative;
-    line-height: 1; /* Убираем влияние межстрочного интервала */
+    line-height: 1;
 }
 
 .nav a::after {
@@ -126,17 +130,33 @@ img { max-width: 100%; display: block; }
 
 .burger {
     display: none;
-    order: 3;
-    align-self: center; /* Гарантируем центрирование бургера */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 101;
 }
 
-/* --- HERO SECTION (ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ) --- */
+.burger span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: #fff;
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+/* Mobile contact info - hidden on desktop */
+.mobile-contact-info {
+    display: none;
+}
+
+/* --- HERO SECTION --- */
 .hero {
-    /* Минимальная высота равна высоте окна минус высота шапки */
-    min-height: calc(100vh - 70px); 
+    min-height: calc(100vh - 70px);
     display: flex;
-    align-items: center; /* Вертикальное центрирование контента */
-    justify-content: center; /* Горизонтальное центрирование контента */
+    align-items: center;
+    justify-content: center;
     text-align: center;
     background: transparent;
     border: none;
@@ -144,13 +164,12 @@ img { max-width: 100%; display: block; }
     backdrop-filter: none;
     padding: 0 20px;
     max-width: 100%;
-    position: relative; /* Для правильного позиционирования дочерних элементов */
+    position: relative;
 }
 
 .hero__content {
     max-width: 700px;
-    /* Добавляем небольшой отступ снизу, чтобы визуально компенсировать верхнюю границу */
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
 }
 
 .hero-title {
@@ -158,7 +177,6 @@ img { max-width: 100%; display: block; }
     line-height: 1.1;
     margin-bottom: 20px;
     font-weight: 800;
-    /* Убираем возможные артефакты от анимаций */
     will-change: transform;
 }
 
@@ -285,27 +303,26 @@ img { max-width: 100%; display: block; }
 .calc-select { width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: #fff; font-size: 15px; outline: none; margin-bottom: 20px; appearance: none; }
 .calc-range { width: 100%; accent-color: #fbbf24; margin-bottom: 20px; cursor: pointer; }
 
-/* Новый стиль для блока результата */
 .calc-result-box { 
     background: rgba(251, 191, 36, 0.1); 
     border: 1px dashed #fbbf24; 
     padding: 20px; 
     border-radius: 12px; 
     margin-bottom: 20px; 
-    text-align: center; /* Центрируем содержимое блока */
+    text-align: center;
 }
 .result-row { 
     font-size: 14px; 
     color: #cbd5e1; 
     margin-bottom: 10px; 
-    display: block; /* Занимает всю ширину */
+    display: block;
 }
 .result-value strong { 
-    font-size: 32px; /* Крупный шрифт для суммы */
+    font-size: 32px;
     color: #fbbf24; 
     font-weight: 800;
-    display: block; /* Новая строка */
-    word-break: keep-all; /* Не разрывать числа */
+    display: block;
+    word-break: keep-all;
 }
 .result-hint { 
     font-size: 12px; 
@@ -371,24 +388,55 @@ img { max-width: 100%; display: block; }
 @media (max-width: 768px) {
     .header { padding: 0 20px; }
     .nav:not(.menu-drawer) { display: none; }
-    .burger { display: block; background: none; border: none; cursor: pointer; padding: 5px; z-index: 101; }
-    .burger span { display: block; width: 25px; height: 2px; background: #fff; margin: 5px 0; transition: 0.3s; }
+    .burger { display: block; }
+    
     body.menu-open .burger span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
     body.menu-open .burger span:nth-child(2) { opacity: 0; }
     body.menu-open .burger span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
     
-    .menu-drawer { position: fixed; top: 0; right: -300px; width: 280px; height: 100vh; background: rgba(11, 17, 32, 0.98); backdrop-filter: blur(20px); border-left: 1px solid rgba(255, 255, 255, 0.1); padding: 80px 30px 30px; transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); z-index: 99; display: flex; flex-direction: column; gap: 20px; box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
+    .menu-drawer { 
+        position: fixed; 
+        top: 0; 
+        right: -300px; 
+        width: 280px; 
+        height: 100vh; 
+        background: rgba(11, 17, 32, 0.98); 
+        backdrop-filter: blur(20px); 
+        border-left: 1px solid rgba(255, 255, 255, 0.1); 
+        padding: 80px 30px 30px; 
+        transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
+        z-index: 99; 
+        display: flex; 
+        flex-direction: column; 
+        gap: 20px; 
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5); 
+    }
     body.menu-open .menu-drawer { right: 0; }
     .menu-drawer a { font-size: 18px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); color: #fff; }
-    .mobile-contact-info { display: block; margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+    
+    .mobile-contact-info { 
+        display: block; 
+        margin-top: auto; 
+        padding-top: 20px; 
+        border-top: 1px solid rgba(255,255,255,0.1); 
+    }
     .mobile-contact-info p { color: #fbbf24; font-weight: 700; font-size: 16px; margin: 0 0 5px; }
     .mobile-contact-info small { color: #94a3b8; font-size: 12px; }
     
-    .overlay { display: block; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); z-index: 98; opacity: 0; visibility: hidden; transition: opacity 0.3s; }
+    .overlay { 
+        display: block; 
+        position: fixed; 
+        inset: 0; 
+        background: rgba(0, 0, 0, 0.6); 
+        z-index: 98; 
+        opacity: 0; 
+        visibility: hidden; 
+        transition: opacity 0.3s; 
+    }
     body.menu-open .overlay { opacity: 1; visibility: visible; }
 
     .glass { padding: 25px 20px; margin: 20px 10px; border-radius: 16px; }
-    .hero { min-height: calc(100vh - 70px); padding-top: 0; } /* На мобилке тоже учитываем шапку */
+    .hero { min-height: calc(100vh - 70px); padding-top: 0; }
     .hero-title { font-size: 32px; }
     .hero-buttons { flex-direction: column; }
     .btn-outline { text-align: center; }
