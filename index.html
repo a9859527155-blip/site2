@@ -29,9 +29,16 @@
                 RENO<span>VA</span>
             </a>
 
-            <!-- Меню справа (десктоп) / Drawer (мобилка) -->
+            <!-- БУРГЕР (Теперь он единственный, кто закрывает меню) -->
+            <button class="burger" data-burger aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Меню (Drawer) -->
             <nav class="nav menu-drawer" data-nav>
-                <div class="menu-close-btn" data-menu-close>&times;</div>
+                <!-- УДАЛИЛИ СТРОКУ С menu-close-btn -->
                 
                 <a href="#services">Услуги</a>
                 <a href="#reviews">Отзывы</a>
@@ -42,13 +49,6 @@
                     <small>Ежедневно 9:00–21:00</small>
                 </div>
             </nav>
-
-            <!-- Бургер (только мобилка, крайний правый угол) -->
-            <button class="burger" data-burger aria-label="Открыть меню">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </header>
 
