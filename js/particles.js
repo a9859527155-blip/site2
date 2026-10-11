@@ -64,7 +64,10 @@ class Particle {
 
 function init() {
     particles = [];
-    const count = Math.min(Math.floor(canvas.width * 0.08), 120);
+    
+    // Больше частиц (коэффициент 0.15 вместо 0.08, макс 200)
+    const count = Math.min(Math.floor(canvas.width * 0.15), 200);
+    
     for (let i = 0; i < count; i++) {
         particles.push(new Particle());
     }
@@ -77,10 +80,12 @@ function connectParticles() {
             const dy = particles[a].y - particles[b].y;
             const dist = Math.sqrt(dx * dx + dy * dy);
 
-            if (dist < 130) {
+            // Увеличенный радиус связи до 160
+            if (dist < 160) {
                 ctx.beginPath();
-                ctx.strokeStyle = `rgba(147, 197, 253, ${(1 - dist / 130) * 0.15})`;
-                ctx.lineWidth = 0.5;
+                // Чуть ярче линии (0.2 вместо 0.15)
+                ctx.strokeStyle = `rgba(147, 197, 253, ${(1 - dist / 160) * 0.2})`;
+                ctx.lineWidth = 0.6; 
                 ctx.moveTo(particles[a].x, particles[a].y);
                 ctx.lineTo(particles[b].x, particles[b].y);
                 ctx.stroke();
