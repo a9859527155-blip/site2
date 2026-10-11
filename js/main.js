@@ -108,22 +108,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // 6. Логика Калькулятора
-    const calcType = document.getElementById("calc-type");
-    const calcArea = document.getElementById("calc-area");
-    const areaVal = document.getElementById("area-val");
-    const totalPrice = document.getElementById("total-price");
-
+    // 6. Логика Калькулятора (Обновленная с Custom Select)
+    
     const prices = {
         standard: 4500,
         capital: 8500,
         designer: 15000
     };
 
+    // Элементы DOM
+    const selectWrapper = document.querySelector(".custom-select-wrapper");
+    const selectBtn = document.getElementById("calc-type-btn");
+    const optionsList = document.querySelectorAll(".option-item");
+    const currentOptionText = document.querySelector(".current-option");
+    const hiddenInput = document.getElementById("calc-type"); // Наш скрытый input
+    
+    const calcArea = document.getElementById("calc-area");
+    const areaVal = document.getElementById("area-val");
+    const totalPrice = document.getElementById("total-price");
+
+    // Функция расчета цены
     function calculatePrice() {
-        if(!calcType || !calcArea || !totalPrice) return;
+        if(!hiddenInput || !calcArea || !totalPrice) return;
         
-        const type = calcType.value;
+        const type = hiddenInput.value;
         const area = parseInt(calcArea.value);
         
         if(areaVal) areaVal.textContent = area;
@@ -134,11 +142,51 @@ document.addEventListener('DOMContentLoaded', () => {
         totalPrice.textContent = total.toLocaleString('ru-RU') + ' ₽';
     }
 
-    if (calcType && calcArea) {
-        calcType.addEventListener("change", calculatePrice);
-        calcArea.addEventListener("input", calculatePrice);
-        calculatePrice();
+    // Открытие/закрытие списка
+    if (selectBtn && selectWrapper) {
+        selectBtn.addEventListener("click", (e) => {
+            e.stopPropagation(); // Чтобы клик не уходил дальше по документу
+            selectWrapper.classList.toggle("open");
+        });
     }
+
+    // Выбор опции из списка
+    optionsList.forEach(option => {
+        option.addEventListener("click", () => {
+            // 1. Убираем выделение со всех
+            optionsList.forEach(opt => opt.classList.remove("selected"));
+            
+            // 2. Ставим выделение на текущий
+            option.classList.add("selected");
+            
+            // 3. Меняем текст в кнопке
+            currentOptionText.textContent = option.textContent;
+            
+            // 4. Обновляем значение в скрытом инпуте
+            hiddenInput.value = option.getAttribute("data-value");
+            
+            // 5. Закрываем список
+            selectWrapper.classList.remove("open");
+            
+            // 6. Пересчитываем цену
+            calculatePrice();
+        });
+    });
+
+    // Закрытие списка при клике вне его области
+    document.addEventListener("click", (e) => {
+        if (selectWrapper && !selectWrapper.contains(e.target)) {
+            selectWrapper.classList.remove("open");
+        }
+    });
+
+    // Слушатель ползунка площади
+    if (calcArea) {
+        calcArea.addEventListener("input", calculatePrice);
+    }
+
+    // Первоначальный расчет
+    calculatePrice();
 });
 
 // 7. Функция открытия Лайтбокса

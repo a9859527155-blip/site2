@@ -189,12 +189,23 @@
                 </div>
 
                 <div class="calc-tool">
+                    <!-- ЗАМЕНА SELECT НА КАСТОМНЫЙ ВЫБОР -->
                     <label class="calc-label">Тип помещения:</label>
-                    <select id="calc-type" class="calc-select">
-                        <option value="standard">Стандартный ремонт</option>
-                        <option value="capital">Капитальный ремонт</option>
-                        <option value="designer">Дизайнерский проект</option>
-                    </select>
+                    
+                    <div class="custom-select-wrapper">
+                        <button type="button" class="custom-select-btn" id="calc-type-btn">
+                            <span class="current-option">Стандартный ремонт</span>
+                            <span class="arrow-down">▼</span>
+                        </button>
+                        
+                        <ul class="custom-options-list" id="calc-options">
+                            <li data-value="standard" class="option-item selected">Стандартный ремонт</li>
+                            <li data-value="capital" class="option-item">Капитальный ремонт</li>
+                            <li data-value="designer" class="option-item">Дизайнерский проект</li>
+                        </ul>
+                    </div>
+                    <!-- СКРЫТЫЙ INPUT ДЛЯ JS ЛОГИКИ -->
+                    <input type="hidden" id="calc-type" value="standard">
 
                     <label class="calc-label">Площадь (м²): <span id="area-val">50</span> м²</label>
                     <input type="range" id="calc-area" min="20" max="300" step="1" value="50" class="calc-range">

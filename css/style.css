@@ -405,6 +405,92 @@ img { max-width: 100%; display: block; }
     transform: scale(1.05); /* Небольшое увеличение картинки при наведении */
 }
 
+/* --- КАСТОМНЫЙ СЕЛЕКТ ДЛЯ КАЛЬКУЛЯТОРА --- */
+.custom-select-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.custom-select-btn {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.custom-select-btn:hover {
+    border-color: #fbbf24;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.arrow-down {
+    font-size: 10px;
+    color: #94a3b8;
+    transition: transform 0.3s ease;
+}
+
+/* Поворачиваем стрелку при открытии */
+.custom-select-wrapper.open .arrow-down {
+    transform: rotate(180deg);
+}
+
+/* Список опций */
+.custom-options-list {
+    position: absolute;
+    top: calc(100% + 5px); /* Чуть ниже кнопки */
+    left: 0;
+    right: 0;
+    background: #1e293b; /* Темный фон как у сайта */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease-out;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+/* Показываем список когда wrapper имеет класс open */
+.custom-select-wrapper.open .custom-options-list {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.option-item {
+    padding: 12px 15px;
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    font-size: 15px;
+}
+
+.option-item:hover {
+    background: rgba(251, 191, 36, 0.1);
+    color: #fbbf24;
+}
+
+.option-item.selected {
+    background: rgba(251, 191, 36, 0.2);
+    color: #fbbf24;
+    font-weight: 600;
+}
+
 /* --- КАЛЬКУЛЯТОР --- */
 .calculator-section { padding: 40px; }
 .calc-wrapper { 
@@ -422,7 +508,6 @@ img { max-width: 100%; display: block; }
     border: 1px solid rgba(255, 255, 255, 0.05); 
 }
 .calc-label { display: block; font-size: 14px; color: #cbd5e1; margin-bottom: 10px; font-weight: 600; }
-.calc-select { width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: #fff; font-size: 15px; outline: none; margin-bottom: 20px; appearance: none; }
 .calc-range { width: 100%; accent-color: #fbbf24; margin-bottom: 20px; cursor: pointer; }
 
 .calc-result-box { 
