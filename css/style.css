@@ -2,6 +2,7 @@
 html {
     scroll-behavior: smooth;
 }
+
 /* Общее */
 * {
     box-sizing: border-box;
@@ -50,6 +51,62 @@ img {
 .btn:hover {
     background: #1d4ed8;
 }
+
+/* Шапка */
+.header {
+    position: sticky;
+    top: 0;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    z-index: 10;
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 64px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+    text-decoration: none;
+}
+
+.nav {
+    display: flex;
+    gap: 24px;
+}
+
+.nav a {
+    color: #334155;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.nav a:hover {
+    color: #2563eb;
+}
+
+.burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.burger span {
+    width: 24px;
+    height: 2px;
+    background: #0f172a;
+}
+
 /* Интерактивный первый экран */
 .hero {
     min-height: 90vh;
@@ -111,60 +168,6 @@ img {
     .hero:hover .house {
         transform: translateY(-10px) scale(1.02);
     }
-}
-/* Шапка */
-.header {
-    position: sticky;
-    top: 0;
-    background: #ffffff;
-    border-bottom: 1px solid #e2e8f0;
-    z-index: 10;
-}
-
-.header__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    min-height: 64px;
-}
-
-.logo {
-    font-size: 20px;
-    font-weight: 700;
-    color: #0f172a;
-    text-decoration: none;
-}
-
-.nav {
-    display: flex;
-    gap: 24px;
-}
-
-.nav a {
-    color: #334155;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.nav a:hover {
-    color: #2563eb;
-}
-
-.burger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    padding: 8px;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-}
-
-.burger span {
-    width: 24px;
-    height: 2px;
-    background: #0f172a;
 }
 
 /* Услуги */
@@ -333,11 +336,11 @@ img {
         border-top: 1px solid #e2e8f0;
     }
 
-    .hero__inner {
-        grid-template-columns: 1fr;
+    .hero__content {
+        max-width: 100%;
     }
 
-    .hero__text h1 {
+    .hero h1 {
         font-size: 32px;
     }
 
