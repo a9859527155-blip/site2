@@ -149,7 +149,15 @@ function openLightbox(src, captionText) {
     
     if(lightbox && lbImg) {
         lbImg.src = src;
-        lbCaption.textContent = captionText;
+        
+        // Если подпись пустая - скрываем элемент подписи
+        if(captionText && captionText.trim() !== "") {
+            lbCaption.textContent = captionText;
+            lbCaption.style.display = "block";
+        } else {
+            lbCaption.style.display = "none";
+        }
+        
         lightbox.classList.add("open");
         document.body.style.overflow = "hidden";
     }

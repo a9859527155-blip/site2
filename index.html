@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO & Meta -->
-    <title>RENOVA — Премиальный ремонт под ключ | Калькулятор и Портфолио</title>
-    <meta name="description" content="Ремонт квартир и домов любой сложности. Фиксированная смета, гарантия качества, дизайн в подарок. Рассчитайте стоимость онлайн.">
+    <title>DEMO SITE — Премиальный ремонт под ключ</title>
+    <meta name="description" content="Демонстрационный проект лендинга услуг ремонта. Интерактивный калькулятор, портфолио и адаптивная вёрстка.">
     
     <!-- Open Graph для соцсетей -->
-    <meta property="og:title" content="RENOVA — Ваш дом новой жизни">
-    <meta property="og:description" content="Премиальный ремонт под ключ. Гарантия 3 года. Онлайн-калькулятор стоимости.">
+    <meta property="og:title" content="DEMO SITE — Ваш дом новой жизни">
+    <meta property="og:description" content="Демонстрация возможностей современной веб-разработки: анимации, интерактив, адаптивность.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://a9859527155-blip.github.io/site2/">
     <meta property="og:image" content="assets/img/preview.jpg"> 
@@ -29,7 +29,7 @@
     <header class="header">
         <div class="container header__inner">
             <a class="logo logo--animated" href="#">
-                RENO<span>VA</span>
+                DEMO<span>SITE</span>
             </a>
 
             <button class="burger" data-burger aria-label="Открыть меню">
@@ -45,9 +45,9 @@
                 <a href="#reviews">Отзывы</a>
                 <a href="#contacts">Контакты</a>
                 
-                <!-- Контакты теперь ТОЛЬКО в мобильном меню (заглушки) -->
+                <!-- Заглушка контакта в мобильном меню -->
                 <div class="mobile-contact-info">
-                    <p>+7 (*** ) ***-**-**</p>
+                    <p>+7 (XXX) XXX-XX-XX</p>
                     <small>Ежедневно 9:00–21:00</small>
                 </div>
             </nav>
@@ -77,7 +77,7 @@
             <div class="cards">
                 <article class="service-card group equal-height">
                     <div class="service-card__glow"></div>
-                    <div class="card-header"><h3>Стандартный ремонт</h3><span class="price-tag">от 4 500 ₽/м²</span></div>
+                    <div class="card-header"><h3>Стандартный ремонт</h3><span class="price-tag">от X XXX ₽/м²</span></div>
                     <p>Идеально для сдачи квартиры или быстрого обновления жилого пространства.</p>
                     <div class="service-details">
                         <ul>
@@ -86,7 +86,7 @@
                             <li>Поклейка обоев под покраску</li>
                             <li>Натяжные потолки</li>
                         </ul>
-                        <p class="note">Срок: 14–21 день.</p>
+                        <p class="note">Срок: XX–XX день.</p>
                     </div>
                     <button class="card-btn toggle-details">Подробнее о пакете ▼</button>
                 </article>
@@ -94,7 +94,7 @@
                 <article class="service-card group featured equal-height">
                     <div class="badge">Хит продаж</div>
                     <div class="service-card__glow"></div>
-                    <div class="card-header"><h3>Капитальный ремонт</h3><span class="price-tag">от 8 500 ₽/м²</span></div>
+                    <div class="card-header"><h3>Капитальный ремонт</h3><span class="price-tag">от X XXX ₽/м²</span></div>
                     <p>Полная трансформация объекта: замена коммуникаций, черновая отделка, чистовые работы.</p>
                     <div class="service-details">
                         <ul>
@@ -103,7 +103,7 @@
                             <li>Штукатурка и стяжка пола</li>
                             <li>Теплые полы</li>
                         </ul>
-                        <p class="note">Срок: 45–60 дней.</p>
+                        <p class="note">Срок: XX–XX дней.</p>
                     </div>
                     <button class="card-btn toggle-details">Выбрать этот пакет ▼</button>
                 </article>
@@ -118,57 +118,37 @@
                             <li>Авторский надзор дизайнера</li>
                             <li>Подбор мебели, света и декора</li>
                         </ul>
-                        <p class="note">Срок: от 3 месяцев.</p>
+                        <p class="note">Срок: от X месяцев.</p>
                     </div>
                     <button class="card-btn toggle-details">Обсудить проект ▼</button>
                 </article>
             </div>
         </section>
 
-        <!-- НОВОЕ: Портфолио -->
+        <!-- НОВОЕ: Портфолио (Чистый вид без текста) -->
         <section id="portfolio" class="glass reveal">
             <h2 class="section__title">Наши работы</h2>
             <p class="section-subtitle">Реальные объекты, сданные нашей командой за последние полгода.</p>
             
             <div class="portfolio-grid">
                 <!-- Проект 1 -->
-                <div class="portfolio-item" onclick="openLightbox('assets/img/work-1.jpg', 'ЖК "Северный", 2-комн.')">
-                    <img src="assets/img/work-1.jpg" alt="Ремонт кухни в современном стиле">
-                    <div class="portfolio-overlay">
-                        <span class="view-icon">🔍</span>
-                        <h4>ЖК "Северный"</h4>
-                        <p>Капитальный ремонт • 65 м²</p>
-                    </div>
+                <div class="portfolio-item" onclick="openLightbox('assets/img/work-1.jpg', '')">
+                    <img src="assets/img/work-1.jpg" alt="Пример интерьера кухни">
                 </div>
 
                 <!-- Проект 2 -->
-                <div class="portfolio-item" onclick="openLightbox('assets/img/work-2.jpg', 'Частный дом, Подмосковье')">
-                    <img src="assets/img/work-2.jpg" alt="Интерьер гостиной комнаты">
-                    <div class="portfolio-overlay">
-                        <span class="view-icon">🔍</span>
-                        <h4>Дом в Барвихе</h4>
-                        <p>Дизайнерский ремонт • 180 м²</p>
-                    </div>
+                <div class="portfolio-item" onclick="openLightbox('assets/img/work-2.jpg', '')">
+                    <img src="assets/img/work-2.jpg" alt="Пример интерьера спальни">
                 </div>
 
                 <!-- Проект 3 -->
-                <div class="portfolio-item" onclick="openLightbox('assets/img/work-3.jpg', 'Офис IT-компании')">
-                    <img src="assets/img/work-3.jpg" alt="Офисное помещение после ремонта">
-                    <div class="portfolio-overlay">
-                        <span class="view-icon">🔍</span>
-                        <h4>Офис TechHub</h4>
-                        <p>Коммерческий ремонт • 120 м²</p>
-                    </div>
+                <div class="portfolio-item" onclick="openLightbox('assets/img/work-3.jpg', '')">
+                    <img src="assets/img/work-3.jpg" alt="Пример офисного помещения">
                 </div>
                 
                  <!-- Проект 4 -->
-                 <div class="portfolio-item" onclick="openLightbox('assets/img/work-4.jpg', 'Санузел под ключ')">
-                    <img src="assets/img/work-4.jpg" alt="Ремонт ванной комнаты">
-                    <div class="portfolio-overlay">
-                        <span class="view-icon">🔍</span>
-                        <h4>Санузел Люкс</h4>
-                        <p>Черновые и чистовые • 8 м²</p>
-                    </div>
+                 <div class="portfolio-item" onclick="openLightbox('assets/img/work-4.jpg', '')">
+                    <img src="assets/img/work-4.jpg" alt="Пример ванной комнаты">
                 </div>
             </div>
         </section>
@@ -210,7 +190,7 @@
 
         <!-- Преимущества -->
         <section id="about" class="glass reveal">
-            <h2 class="section__title">Почему клиенты выбирают RENOVA</h2>
+            <h2 class="section__title">Почему клиенты выбирают нас</h2>
             <div class="features-grid">
                 <div class="feature-item feature-hover">
                     <div class="feature-num">01</div>
@@ -219,7 +199,7 @@
                 </div>
                 <div class="feature-item feature-hover">
                     <div class="feature-num">02</div>
-                    <h3>Гарантия 3 года</h3>
+                    <h3>Гарантия качества</h3>
                     <p>Мы уверены в качестве своих материалов и работы мастеров.</p>
                 </div>
                 <div class="feature-item feature-hover">
@@ -242,17 +222,17 @@
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
                     <p>«Сделали капитальный ремонт трешки. Ребята молодцы, уложились точно в срок даже с учетом праздников.»</p>
-                    <div class="author">— Елена Морозова, ЖК «Прайм Тайм»</div>
+                    <div class="author">— Клиент №1</div>
                 </div>
                 <div class="review-card">
                     <div class="stars">★★★★★</div>
                     <p>«Заказывали дизайнерский ремонт дома. Результат превзошел ожидания. Особенно порадовало отношение к деталям.»</p>
-                    <div class="author">— Андрей Соколов, коттеджный поселок</div>
+                    <div class="author">— Клиент №2</div>
                 </div>
                  <div class="review-card">
                     <div class="stars">★★★★☆</div>
                     <p>«Хорошая бригада, работают чисто. Компания взяла на себя все вопросы с поставщиками материалов.»</p>
-                    <div class="author">— Михаил Орлов, офис класса B+</div>
+                    <div class="author">— Клиент №3</div>
                 </div>
             </div>
         </section>
@@ -262,11 +242,11 @@
             <div class="contact-wrapper">
                 <div class="contact-info">
                     <h2 class="section__title">Начните свой ремонт сегодня</h2>
-                    <p>Оставьте заявку, и наш прораб перезвонит вам в течение 15 минут для консультации и записи на бесплатный замер.</p>
+                    <p>Оставьте заявку, и наш специалист перезвонит вам в течение 15 минут для консультации и записи на бесплатный замер.</p>
                     <div class="contact-methods">
-                        <div class="method-item"><strong>Телефон:</strong><a href="tel:+7**********">+7 (*** ) ***-**-**</a></div>
-                        <div class="method-item"><strong>Email:</strong><a href="mailto:******@****.ru">******@****.ru</a></div>
-                        <div class="method-item"><strong>Адрес офиса:</strong><span>*****************</span></div>
+                        <div class="method-item"><strong>Телефон:</strong><span>+7 (XXX) XXX-XX-XX</span></div>
+                        <div class="method-item"><strong>Email:</strong><span>demo@example.com</span></div>
+                        <div class="method-item"><strong>Адрес офиса:</strong><span>г. Город, ул. Улица, д. Дом, оф. Номер</span></div>
                         <div class="method-item"><strong>Время работы:</strong><span>Ежедневно 9:00–21:00</span></div>
                     </div>
                 </div>
@@ -286,8 +266,8 @@
         <!-- Подвал -->
         <footer class="footer">
             <div class="container footer__inner">
-                <div class="footer-logo">RENO<span>VA</span></div>
-                <p>© 2026 RENOVA. Все права защищены.</p>
+                <div class="footer-logo">DEMO<span>SITE</span></div>
+                <p>© 2026 DEMO SITE. Демонстрационный проект.</p>
                 <div class="social-links"><a href="#" title="Telegram">TG</a><a href="#" title="VKontakte">VK</a><a href="#" title="WhatsApp">WA</a></div>
             </div>
         </footer>
