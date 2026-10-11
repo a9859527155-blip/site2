@@ -1,7 +1,8 @@
-/* Общее */
+/* Плавная прокрутка по якорям */
 html {
     scroll-behavior: smooth;
 }
+/* Общее */
 * {
     box-sizing: border-box;
 }
