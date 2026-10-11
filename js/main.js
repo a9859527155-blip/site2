@@ -55,53 +55,65 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Форма заявки
+    // 4. Форма заявки (ИЗОЛИРОВАННАЯ ВЕРСИЯ)
     const form = document.querySelector("[data-form]");
     const message = document.querySelector("[data-form-message]");
+
     if (form && message) {
         form.addEventListener("submit", (event) => {
-            event.preventDefault();
+            event.preventDefault(); // Блокируем стандартную отправку браузера
+
             const data = new FormData(form);
             const name = (data.get("name") || "").toString().trim();
             const phone = (data.get("phone") || "").toString().trim();
             const type = (data.get("type") || "").toString();
+
+            // Простая проверка заполнения (без отправки на сервер)
             if (!name || !phone) {
                 message.textContent = "Пожалуйста, заполните имя и телефон.";
                 message.className = "form__message form__message--error";
                 return;
             }
+
             if (phone.replace(/\D/g, "").length < 11) {
                  message.textContent = "Введите полный номер телефона.";
                  message.className = "form__message form__message--error";
                  return;
             }
+
+            // Имитация успешной отправки (данные НИКУДА не уходят)
             message.textContent = `Заявка принята! Мы свяжемся с вами по поводу "${type || 'ремонта'}".`;
             message.className = "form__message form__message--ok";
+            
+            // Очищаем форму
             form.reset();
-            setTimeout(() => { message.textContent = ""; }, 5000);
+            
+            // Через 5 секунд убираем сообщение
+            setTimeout(() => {
+                message.textContent = "";
+            }, 5000);
         });
     }
 
-    // 5. НОВОЕ: Анимации появления (Intersection Observer)
+    // 5. Анимации появления (Intersection Observer)
     const observerOptions = { threshold: 0.1 };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("active");
-                observer.unobserve(entry.target); // Отключаем наблюдение после одного раза
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // 6. НОВОЕ: Логика Калькулятора
+    // 6. Логика Калькулятора
     const calcType = document.getElementById("calc-type");
     const calcArea = document.getElementById("calc-area");
     const areaVal = document.getElementById("area-val");
     const totalPrice = document.getElementById("total-price");
 
-    // Цены за кв. метр (примерные)
     const prices = {
         standard: 4500,
         capital: 8500,
@@ -114,26 +126,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const type = calcType.value;
         const area = parseInt(calcArea.value);
         
-        // Обновляем текст площади
         if(areaVal) areaVal.textContent = area;
         
-        // Считаем сумму
         const pricePerMeter = prices[type];
         const total = area * pricePerMeter;
         
-        // Форматируем число с пробелами (например: 1 200 000)
         totalPrice.textContent = total.toLocaleString('ru-RU') + ' ₽';
     }
 
     if (calcType && calcArea) {
         calcType.addEventListener("change", calculatePrice);
         calcArea.addEventListener("input", calculatePrice);
-        // Первоначальный расчет
         calculatePrice();
     }
 });
 
-// 7. НОВОЕ: Функция открытия Лайтбокса (глобальная для вызова из HTML)
+// 7. Функция открытия Лайтбокса
 function openLightbox(src, captionText) {
     const lightbox = document.getElementById("lightbox");
     const lbImg = document.getElementById("lb-img");
@@ -143,7 +151,7 @@ function openLightbox(src, captionText) {
         lbImg.src = src;
         lbCaption.textContent = captionText;
         lightbox.classList.add("open");
-        document.body.style.overflow = "hidden"; // Блокируем скролл страницы позади
+        document.body.style.overflow = "hidden";
     }
 }
 
@@ -155,10 +163,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if(closeLb && lightbox) {
         closeLb.addEventListener("click", () => {
             lightbox.classList.remove("open");
-            document.body.style.overflow = ""; // Возвращаем скролл
+            document.body.style.overflow = "";
         });
         
-        // Закрытие по клику мимо картинки
         lightbox.addEventListener("click", (e) => {
             if(e.target === lightbox) {
                 lightbox.classList.remove("open");

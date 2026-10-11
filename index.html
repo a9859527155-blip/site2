@@ -45,9 +45,9 @@
                 <a href="#reviews">Отзывы</a>
                 <a href="#contacts">Контакты</a>
                 
-                <!-- Контакты теперь ТОЛЬКО в мобильном меню -->
+                <!-- Контакты теперь ТОЛЬКО в мобильном меню (заглушки) -->
                 <div class="mobile-contact-info">
-                    <p>+7 (999) 000-00-00</p>
+                    <p>+7 (*** ) ***-**-**</p>
                     <small>Ежедневно 9:00–21:00</small>
                 </div>
             </nav>
@@ -257,21 +257,22 @@
             </div>
         </section>
 
-        <!-- Форма заявки -->
+        <!-- Форма заявки (Безопасная версия) -->
         <section id="contacts" class="glass contact-section reveal">
             <div class="contact-wrapper">
                 <div class="contact-info">
                     <h2 class="section__title">Начните свой ремонт сегодня</h2>
                     <p>Оставьте заявку, и наш прораб перезвонит вам в течение 15 минут для консультации и записи на бесплатный замер.</p>
                     <div class="contact-methods">
-                        <div class="method-item"><strong>Телефон:</strong><a href="tel:+79990000000">+7 (999) 000-00-00</a></div>
-                        <div class="method-item"><strong>Email:</strong><a href="mailto:hello@renova.ru">hello@renova.ru</a></div>
-                        <div class="method-item"><strong>Адрес офиса:</strong><span>г. Москва, ул. Строителей, д. 15, оф. 304</span></div>
+                        <div class="method-item"><strong>Телефон:</strong><a href="tel:+7**********">+7 (*** ) ***-**-**</a></div>
+                        <div class="method-item"><strong>Email:</strong><a href="mailto:******@****.ru">******@****.ru</a></div>
+                        <div class="method-item"><strong>Адрес офиса:</strong><span>*****************</span></div>
                         <div class="method-item"><strong>Время работы:</strong><span>Ежедневно 9:00–21:00</span></div>
                     </div>
                 </div>
 
-                <form class="form" data-form>
+                <!-- Форма без action, только визуальная имитация -->
+                <form class="form" data-form novalidate>
                     <label class="form__label">Ваше имя<input type="text" name="name" required placeholder="Как к вам обращаться?"></label>
                     <label class="form__label">Телефон<input type="tel" name="phone" id="phone-input" required placeholder="+7 (___) ___-__-__"></label>
                     <label class="form__label">Тип помещения<select name="type" class="form-select"><option value="">Выберите вариант</option><option value="kvartira">Квартира</option><option value="dom">Загородный дом</option><option value="office">Офис / Коммерция</option></select></label>
