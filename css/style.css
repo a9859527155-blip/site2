@@ -29,26 +29,21 @@ img { max-width: 100%; display: block; }
 .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
-/* --- ГЛАССНЫЕ КОНТЕЙНЕРЫ (ИСПРАВЛЕНО) --- */
+/* --- ГЛАССНЫЕ КОНТЕЙНЕРЫ --- */
 .glass {
-    /* Теперь это основной контейнер для контента */
     width: 100%;
     max-width: 900px; /* Единая ширина для всех блоков */
-    margin: 40px auto; /* Центрирование */
-    
+    margin: 40px auto; 
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 24px;
-    padding: 40px; /* Внутренние отступы */
+    padding: 40px; 
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
-
-/* Убираем эффект ховера на рамке всей секции, чтобы не отвлекало */
 .glass:hover { border-color: rgba(255, 255, 255, 0.15); }
-
 .content { position: relative; z-index: 1; padding-top: 80px; }
 
 /* --- ШАПКА --- */
@@ -63,12 +58,12 @@ img { max-width: 100%; display: block; }
 .nav a:hover { color: #fff; } .nav a:hover::after { width: 100%; }
 .burger { display: none; order: 3; }
 
-/* --- HERO SECTION (Без стекла) --- */
+/* --- HERO SECTION (Центрирование исправлено) --- */
 .hero { 
     min-height: 80vh; 
     display: flex; 
     align-items: center; 
-    justify-content: center; /* Центрируем текст на широким экране */
+    justify-content: center; /* Горизонтальное центрирование всего контента */
     text-align: center;
     background: transparent; 
     border: none; 
@@ -77,14 +72,14 @@ img { max-width: 100%; display: block; }
     padding: 0 20px;
     max-width: 100%;
 }
-.hero__content { max-width: 700px; }
+.hero__content { max-width: 700px; } /* Ограничиваем ширину текста, но он остается по центру блока */
 .hero-title { font-size: clamp(40px, 6vw, 64px); line-height: 1.1; margin-bottom: 20px; font-weight: 800; }
 .highlight-text { color: #fbbf24; position: relative; display: inline-block; }
 .highlight-text::before { content: ''; position: absolute; bottom: 5px; left: 0; width: 100%; height: 12px; background: rgba(251, 191, 36, 0.3); z-index: -1; transform: skew(-10deg); }
 .hero p { font-size: 18px; color: #94a3b8; margin-bottom: 30px; max-width: 500px; margin-inline: auto; }
 .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
 
-/* --- КНОПКИ (ИСПРАВЛЕНО: убрано смещение при ховере) --- */
+/* --- КНОПКИ --- */
 .btn { 
     display: inline-flex; 
     align-items: center; 
@@ -100,14 +95,10 @@ img { max-width: 100%; display: block; }
     text-decoration: none; 
     position: relative; 
     overflow: hidden; 
-    /* Убрали scale(), оставили только тень и подсветку, чтобы ничего не прыгало */
     transition: box-shadow 0.3s ease, transform 0.1s ease; 
     box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3); 
 }
-.btn:hover { 
-    box-shadow: 0 8px 25px rgba(251, 191, 36, 0.5); 
-    transform: translateY(-2px); /* Небольшое поднятие безопасно */
-}
+.btn:hover { box-shadow: 0 8px 25px rgba(251, 191, 36, 0.5); transform: translateY(-2px); }
 .btn:active { transform: translateY(0); }
 .btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: 0.5s; }
 .btn:hover::before { left: 100%; }
@@ -158,11 +149,8 @@ img { max-width: 100%; display: block; }
 .portfolio-overlay h4 { margin: 0 0 5px; font-size: 18px; color: #fff; }
 .portfolio-overlay p { margin: 0; font-size: 13px; color: #fbbf24; }
 
-/* --- КАЛЬКУЛЯТОР (ИСПРАВЛЕНО: Ширина как у всех) --- */
-.calculator-section { 
-    /* .glass уже дает max-width: 900px, поэтому здесь просто убираем лишнее */
-    padding: 40px; 
-}
+/* --- КАЛЬКУЛЯТОР (ИСПРАВЛЕНО РАЗМЕЩЕНИЕ ЦЕНЫ) --- */
+.calculator-section { padding: 40px; }
 .calc-wrapper { 
     display: grid; 
     grid-template-columns: 1fr 1fr; 
@@ -180,10 +168,35 @@ img { max-width: 100%; display: block; }
 .calc-label { display: block; font-size: 14px; color: #cbd5e1; margin-bottom: 10px; font-weight: 600; }
 .calc-select { width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: #fff; font-size: 15px; outline: none; margin-bottom: 20px; appearance: none; }
 .calc-range { width: 100%; accent-color: #fbbf24; margin-bottom: 20px; cursor: pointer; }
-.calc-result-box { background: rgba(251, 191, 36, 0.1); border: 1px dashed #fbbf24; padding: 20px; border-radius: 12px; margin-bottom: 20px; }
-.result-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
-.result-row strong { font-size: 24px; color: #fbbf24; }
-.result-hint { font-size: 12px; color: #94a3b8; margin: 0; }
+
+/* Новый стиль для блока результата */
+.calc-result-box { 
+    background: rgba(251, 191, 36, 0.1); 
+    border: 1px dashed #fbbf24; 
+    padding: 20px; 
+    border-radius: 12px; 
+    margin-bottom: 20px; 
+    text-align: center; /* Центрируем содержимое блока */
+}
+.result-row { 
+    font-size: 14px; 
+    color: #cbd5e1; 
+    margin-bottom: 10px; 
+    display: block; /* Занимает всю ширину */
+}
+.result-value strong { 
+    font-size: 32px; /* Крупный шрифт для суммы */
+    color: #fbbf24; 
+    font-weight: 800;
+    display: block; /* Новая строка */
+    word-break: keep-all; /* Не разрывать числа */
+}
+.result-hint { 
+    font-size: 12px; 
+    color: #94a3b8; 
+    margin-top: 10px; 
+    display: block;
+}
 
 /* --- ПРЕИМУЩЕСТВА --- */
 .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
