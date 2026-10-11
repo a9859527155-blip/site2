@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const burger = document.querySelector("[data-burger]");
     const nav = document.querySelector("[data-nav]");
     const overlay = document.querySelector("[data-overlay]");
-    const closeBtn = document.querySelector("[data-menu-close]");
     const body = document.body;
 
     function toggleMenu() {
@@ -12,38 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (burger && nav) {
         burger.addEventListener("click", toggleMenu);
-        
-        // Закрытие при клике на ссылку
         nav.querySelectorAll("a").forEach((link) => {
             link.addEventListener("click", () => {
-                if (body.classList.contains("menu-open")) {
-                    toggleMenu();
-                }
+                if (body.classList.contains("menu-open")) toggleMenu();
             });
         });
     }
+    if (overlay) overlay.addEventListener("click", toggleMenu);
 
-    if (closeBtn) {
-        closeBtn.addEventListener("click", toggleMenu);
-    }
-
-    if (overlay) {
-        overlay.addEventListener("click", toggleMenu);
-    }
-
-
-    // 2. Аккордеон услуг (Toggle Details)
+    // 2. Аккордеон услуг
     const serviceCards = document.querySelectorAll(".service-card");
-
     serviceCards.forEach(card => {
         const btn = card.querySelector(".toggle-details");
-        const details = card.querySelector(".service-details");
-        
-        if (btn && details) {
+        if (btn) {
             btn.addEventListener("click", (e) => {
                 e.preventDefault(); 
-                
-                // Закрываем другие открытые карточки
                 serviceCards.forEach(otherCard => {
                     if (otherCard !== card && otherCard.classList.contains("active")) {
                         otherCard.classList.remove("active");
@@ -51,92 +33,137 @@ document.addEventListener('DOMContentLoaded', () => {
                         if(otherBtn) otherBtn.textContent = "Подробнее о пакете ▼";
                     }
                 });
-
-                // Переключаем текущую
                 card.classList.toggle("active");
-                
-                // Меняем текст кнопки
-                if (card.classList.contains("active")) {
-                    btn.textContent = "Свернуть детали ▲";
-                } else {
-                    btn.textContent = "Подробнее о пакете ▼";
-                }
+                btn.textContent = card.classList.contains("active") ? "Свернуть детали ▲" : "Подробнее о пакете ▼";
             });
         }
     });
 
-
-    // 3. Маска для телефона (+7 (XXX) XXX-XX-XX)
+    // 3. Маска телефона
     const phoneInput = document.getElementById("phone-input");
-    
     if (phoneInput) {
         phoneInput.addEventListener("input", (e) => {
-            let value = e.target.value.replace(/\D/g, ""); // Оставляем только цифры
-            
-            // Если начинается с 8, заменяем на 7
-            if (value.startsWith("8")) {
-                value = "7" + value.slice(1);
-            }
-            
-            // Принудительно добавляем 7 в начало, если нет
-            if (!value.startsWith("7")) {
-                value = "7" + value;
-            }
-
+            let value = e.target.value.replace(/\D/g, "");
+            if (value.startsWith("8")) value = "7" + value.slice(1);
+            if (!value.startsWith("7")) value = "7" + value;
             let formattedValue = "+7";
-            
-            if (value.length > 1) {
-                formattedValue += " (" + value.substring(1, 4);
-            }
-            if (value.length >= 5) {
-                formattedValue += ") " + value.substring(4, 7);
-            }
-            if (value.length >= 8) {
-                formattedValue += "-" + value.substring(7, 9);
-            }
-            if (value.length >= 10) {
-                formattedValue += "-" + value.substring(9, 11);
-            }
-
+            if (value.length > 1) formattedValue += " (" + value.substring(1, 4);
+            if (value.length >= 5) formattedValue += ") " + value.substring(4, 7);
+            if (value.length >= 8) formattedValue += "-" + value.substring(7, 9);
+            if (value.length >= 10) formattedValue += "-" + value.substring(9, 11);
             e.target.value = formattedValue;
         });
     }
 
-
     // 4. Форма заявки
     const form = document.querySelector("[data-form]");
     const message = document.querySelector("[data-form-message]");
-
     if (form && message) {
         form.addEventListener("submit", (event) => {
             event.preventDefault();
-
             const data = new FormData(form);
             const name = (data.get("name") || "").toString().trim();
             const phone = (data.get("phone") || "").toString().trim();
             const type = (data.get("type") || "").toString();
-
             if (!name || !phone) {
                 message.textContent = "Пожалуйста, заполните имя и телефон.";
                 message.className = "form__message form__message--error";
                 return;
             }
-
-            // Проверка длины номера (минимум 11 символов включая +7)
             if (phone.replace(/\D/g, "").length < 11) {
                  message.textContent = "Введите полный номер телефона.";
                  message.className = "form__message form__message--error";
                  return;
             }
-
-            // Имитация успешной отправки
             message.textContent = `Заявка принята! Мы свяжемся с вами по поводу "${type || 'ремонта'}".`;
             message.className = "form__message form__message--ok";
             form.reset();
-            
-            setTimeout(() => {
-                message.textContent = "";
-            }, 5000);
+            setTimeout(() => { message.textContent = ""; }, 5000);
+        });
+    }
+
+    // 5. НОВОЕ: Анимации появления (Intersection Observer)
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+                observer.unobserve(entry.target); // Отключаем наблюдение после одного раза
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // 6. НОВОЕ: Логика Калькулятора
+    const calcType = document.getElementById("calc-type");
+    const calcArea = document.getElementById("calc-area");
+    const areaVal = document.getElementById("area-val");
+    const totalPrice = document.getElementById("total-price");
+
+    // Цены за кв. метр (примерные)
+    const prices = {
+        standard: 4500,
+        capital: 8500,
+        designer: 15000
+    };
+
+    function calculatePrice() {
+        if(!calcType || !calcArea || !totalPrice) return;
+        
+        const type = calcType.value;
+        const area = parseInt(calcArea.value);
+        
+        // Обновляем текст площади
+        if(areaVal) areaVal.textContent = area;
+        
+        // Считаем сумму
+        const pricePerMeter = prices[type];
+        const total = area * pricePerMeter;
+        
+        // Форматируем число с пробелами (например: 1 200 000)
+        totalPrice.textContent = total.toLocaleString('ru-RU') + ' ₽';
+    }
+
+    if (calcType && calcArea) {
+        calcType.addEventListener("change", calculatePrice);
+        calcArea.addEventListener("input", calculatePrice);
+        // Первоначальный расчет
+        calculatePrice();
+    }
+});
+
+// 7. НОВОЕ: Функция открытия Лайтбокса (глобальная для вызова из HTML)
+function openLightbox(src, captionText) {
+    const lightbox = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lb-img");
+    const lbCaption = document.getElementById("lb-caption");
+    
+    if(lightbox && lbImg) {
+        lbImg.src = src;
+        lbCaption.textContent = captionText;
+        lightbox.classList.add("open");
+        document.body.style.overflow = "hidden"; // Блокируем скролл страницы позади
+    }
+}
+
+// Закрытие лайтбокса
+document.addEventListener("DOMContentLoaded", () => {
+    const closeLb = document.querySelector(".close-lb");
+    const lightbox = document.getElementById("lightbox");
+    
+    if(closeLb && lightbox) {
+        closeLb.addEventListener("click", () => {
+            lightbox.classList.remove("open");
+            document.body.style.overflow = ""; // Возвращаем скролл
+        });
+        
+        // Закрытие по клику мимо картинки
+        lightbox.addEventListener("click", (e) => {
+            if(e.target === lightbox) {
+                lightbox.classList.remove("open");
+                document.body.style.overflow = "";
+            }
         });
     }
 });
