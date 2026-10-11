@@ -75,11 +75,20 @@
         <section id="services" class="glass reveal">
             <h2 class="section__title">Что мы предлагаем</h2>
             <div class="cards">
+                <!-- Карточка 1 -->
                 <article class="service-card group equal-height">
                     <div class="service-card__glow"></div>
-                    <div class="card-header"><h3>Стандартный ремонт</h3><span class="price-tag">от X XXX ₽/м²</span></div>
+                    
+                    <!-- Заголовок теперь один, без цены рядом -->
+                    <h3>Стандартный ремонт</h3>
+                    
                     <p>Идеально для сдачи квартиры или быстрого обновления жилого пространства.</p>
+                    
+                    <!-- Блок деталей (раскрывается) -->
                     <div class="service-details">
+                        <!-- Цена добавлена сюда -->
+                        <div class="detail-price">от X XXX ₽/м²</div>
+                        
                         <ul>
                             <li>Выравнивание стен шпатлевкой</li>
                             <li>Укладка ламината / линолеума</li>
@@ -88,15 +97,24 @@
                         </ul>
                         <p class="note">Срок: XX–XX день.</p>
                     </div>
+                    
                     <button class="card-btn toggle-details">Подробнее о пакете ▼</button>
                 </article>
 
+                <!-- Карточка 2 (Хит продаж) -->
                 <article class="service-card group featured equal-height">
+                    <!-- Бейдж вынесен НАД контентом карточки через CSS position absolute -->
                     <div class="badge">Хит продаж</div>
                     <div class="service-card__glow"></div>
-                    <div class="card-header"><h3>Капитальный ремонт</h3><span class="price-tag">от X XXX ₽/м²</span></div>
+                    
+                    <h3>Капитальный ремонт</h3>
+                    
                     <p>Полная трансформация объекта: замена коммуникаций, черновая отделка, чистовые работы.</p>
+                    
                     <div class="service-details">
+                         <!-- Цена добавлена сюда -->
+                        <div class="detail-price">от X XXX ₽/м²</div>
+                        
                         <ul>
                             <li>Демонтаж старых покрытий</li>
                             <li>Новая электрика и сантехника</li>
@@ -105,14 +123,22 @@
                         </ul>
                         <p class="note">Срок: XX–XX дней.</p>
                     </div>
+                    
                     <button class="card-btn toggle-details">Выбрать этот пакет ▼</button>
                 </article>
 
+                <!-- Карточка 3 -->
                 <article class="service-card group equal-height">
                     <div class="service-card__glow"></div>
-                    <div class="card-header"><h3>Дизайнерский проект</h3><span class="price-tag">Индивидуально</span></div>
+                    
+                    <h3>Дизайнерский проект</h3>
+                    
                     <p>Эксклюзивный интерьер по авторскому проекту архитектора с полным сопровождением.</p>
+                    
                     <div class="service-details">
+                         <!-- Цена добавлена сюда -->
+                        <div class="detail-price">Индивидуально</div>
+                        
                         <ul>
                             <li>Разработка концепции и 3D-визуализации</li>
                             <li>Авторский надзор дизайнера</li>
@@ -120,6 +146,7 @@
                         </ul>
                         <p class="note">Срок: от X месяцев.</p>
                     </div>
+                    
                     <button class="card-btn toggle-details">Обсудить проект ▼</button>
                 </article>
             </div>
