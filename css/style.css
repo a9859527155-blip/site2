@@ -1,11 +1,6 @@
 /* Базовые настройки */
-html {
-    scroll-behavior: smooth;
-}
-
-* {
-    box-sizing: border-box;
-}
+html { scroll-behavior: smooth; }
+* { box-sizing: border-box; }
 
 body {
     margin: 0;
@@ -34,20 +29,26 @@ img { max-width: 100%; display: block; }
 .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
 .reveal.active { opacity: 1; transform: translateY(0); }
 
-/* --- ГЛАССНЫЕ КОНТЕЙНЕРЫ --- */
+/* --- ГЛАССНЫЕ КОНТЕЙНЕРЫ (ИСПРАВЛЕНО) --- */
 .glass {
+    /* Теперь это основной контейнер для контента */
+    width: 100%;
+    max-width: 900px; /* Единая ширина для всех блоков */
+    margin: 40px auto; /* Центрирование */
+    
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 24px;
-    padding: 40px;
-    margin: 30px auto;
-    max-width: 900px;
+    padding: 40px; /* Внутренние отступы */
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
-.glass:hover { border-color: rgba(251, 191, 36, 0.3); }
+
+/* Убираем эффект ховера на рамке всей секции, чтобы не отвлекало */
+.glass:hover { border-color: rgba(255, 255, 255, 0.15); }
+
 .content { position: relative; z-index: 1; padding-top: 80px; }
 
 /* --- ШАПКА --- */
@@ -62,29 +63,71 @@ img { max-width: 100%; display: block; }
 .nav a:hover { color: #fff; } .nav a:hover::after { width: 100%; }
 .burger { display: none; order: 3; }
 
-/* --- HERO SECTION --- */
-.hero { min-height: 80vh; display: flex; align-items: center; text-align: left; background: transparent; border: none; box-shadow: none; backdrop-filter: none; padding-left: 0; padding-right: 0; }
-.hero__content { max-width: 600px; }
+/* --- HERO SECTION (Без стекла) --- */
+.hero { 
+    min-height: 80vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; /* Центрируем текст на широким экране */
+    text-align: center;
+    background: transparent; 
+    border: none; 
+    box-shadow: none; 
+    backdrop-filter: none; 
+    padding: 0 20px;
+    max-width: 100%;
+}
+.hero__content { max-width: 700px; }
 .hero-title { font-size: clamp(40px, 6vw, 64px); line-height: 1.1; margin-bottom: 20px; font-weight: 800; }
 .highlight-text { color: #fbbf24; position: relative; display: inline-block; }
 .highlight-text::before { content: ''; position: absolute; bottom: 5px; left: 0; width: 100%; height: 12px; background: rgba(251, 191, 36, 0.3); z-index: -1; transform: skew(-10deg); }
-.hero p { font-size: 18px; color: #94a3b8; margin-bottom: 30px; max-width: 500px; }
-.hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
+.hero p { font-size: 18px; color: #94a3b8; margin-bottom: 30px; max-width: 500px; margin-inline: auto; }
+.hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
 
-/* --- КНОПКИ --- */
-.btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 32px; background: linear-gradient(135deg, #fbbf24, #d97706); color: #0b1120; font-weight: 700; font-size: 16px; border: none; border-radius: 12px; cursor: pointer; text-decoration: none; position: relative; overflow: hidden; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3); }
-.btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 25px rgba(251, 191, 36, 0.5); }
-.btn:active { transform: translateY(0) scale(0.98); }
+/* --- КНОПКИ (ИСПРАВЛЕНО: убрано смещение при ховере) --- */
+.btn { 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 14px 32px; 
+    background: linear-gradient(135deg, #fbbf24, #d97706); 
+    color: #0b1120; 
+    font-weight: 700; 
+    font-size: 16px; 
+    border: none; 
+    border-radius: 12px; 
+    cursor: pointer; 
+    text-decoration: none; 
+    position: relative; 
+    overflow: hidden; 
+    /* Убрали scale(), оставили только тень и подсветку, чтобы ничего не прыгало */
+    transition: box-shadow 0.3s ease, transform 0.1s ease; 
+    box-shadow: 0 4px 15px rgba(251, 191, 36, 0.3); 
+}
+.btn:hover { 
+    box-shadow: 0 8px 25px rgba(251, 191, 36, 0.5); 
+    transform: translateY(-2px); /* Небольшое поднятие безопасно */
+}
+.btn:active { transform: translateY(0); }
 .btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: 0.5s; }
 .btn:hover::before { left: 100%; }
 .full-width { width: 100%; margin-top: 20px; }
 
-.btn-outline { padding: 14px 32px; background: transparent; border: 2px solid rgba(255, 255, 255, 0.2); color: #fff; font-weight: 600; border-radius: 12px; text-decoration: none; transition: all 0.3s; }
+.btn-outline { 
+    padding: 14px 32px; 
+    background: transparent; 
+    border: 2px solid rgba(255, 255, 255, 0.2); 
+    color: #fff; 
+    font-weight: 600; 
+    border-radius: 12px; 
+    text-decoration: none; 
+    transition: all 0.3s; 
+}
 .btn-outline:hover { border-color: #fbbf24; color: #fbbf24; background: rgba(251, 191, 36, 0.05); }
 
 /* --- УСЛУГИ --- */
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; align-items: stretch; }
-.service-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 30px; position: relative; overflow: hidden; transition: all 0.4s ease; display: flex; flex-direction: column; height: 100%; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; align-items: stretch; }
+.service-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 25px; position: relative; overflow: hidden; transition: all 0.4s ease; display: flex; flex-direction: column; height: 100%; }
 .service-card.featured { border-color: rgba(251, 191, 36, 0.5); background: rgba(251, 191, 36, 0.05); transform: scale(1.02); z-index: 2; }
 .badge { position: absolute; top: 15px; right: 15px; background: #fbbf24; color: #0b1120; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
 .service-card__glow { position: absolute; top: 50%; left: 50%; width: 150px; height: 150px; background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 70%); transform: translate(-50%, -50%) scale(0); opacity: 0; transition: opacity 0.3s, transform 0.3s; pointer-events: none; z-index: 0; }
@@ -103,8 +146,8 @@ img { max-width: 100%; display: block; }
 .card-btn { width: 100%; padding: 12px; background: transparent; border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s; position: relative; z-index: 1; margin-top: auto; }
 .card-btn:hover { background: rgba(251, 191, 36, 0.1); border-color: #fbbf24; color: #fbbf24; }
 
-/* --- НОВОЕ: ПОРТФОЛИО --- */
-.section-subtitle { color: #94a3b8; margin-bottom: 30px; font-size: 16px; }
+/* --- ПОРТФОЛИО --- */
+.section-subtitle { color: #94a3b8; margin-bottom: 30px; font-size: 16px; text-align: center;}
 .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
 .portfolio-item { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; cursor: pointer; border: 1px solid rgba(255,255,255,0.05); }
 .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
@@ -115,10 +158,25 @@ img { max-width: 100%; display: block; }
 .portfolio-overlay h4 { margin: 0 0 5px; font-size: 18px; color: #fff; }
 .portfolio-overlay p { margin: 0; font-size: 13px; color: #fbbf24; }
 
-/* --- НОВОЕ: КАЛЬКУЛЯТОР --- */
-.calculator-section { max-width: 1000px; }
-.calc-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-.calc-tool { background: rgba(0, 0, 0, 0.2); padding: 30px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05); }
+/* --- КАЛЬКУЛЯТОР (ИСПРАВЛЕНО: Ширина как у всех) --- */
+.calculator-section { 
+    /* .glass уже дает max-width: 900px, поэтому здесь просто убираем лишнее */
+    padding: 40px; 
+}
+.calc-wrapper { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 40px; 
+    align-items: start; 
+}
+.calc-info h2 { margin-bottom: 15px; }
+.calc-info p { color: #94a3b8; margin-bottom: 0; }
+.calc-tool { 
+    background: rgba(0, 0, 0, 0.2); 
+    padding: 30px; 
+    border-radius: 16px; 
+    border: 1px solid rgba(255, 255, 255, 0.05); 
+}
 .calc-label { display: block; font-size: 14px; color: #cbd5e1; margin-bottom: 10px; font-weight: 600; }
 .calc-select { width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: #fff; font-size: 15px; outline: none; margin-bottom: 20px; appearance: none; }
 .calc-range { width: 100%; accent-color: #fbbf24; margin-bottom: 20px; cursor: pointer; }
@@ -172,7 +230,7 @@ img { max-width: 100%; display: block; }
 .social-links a { color: #94a3b8; text-decoration: none; font-weight: 600; transition: color 0.3s; }
 .social-links a:hover { color: #fbbf24; }
 
-/* --- ЛАЙТБОКС (Модальное окно фото) --- */
+/* --- ЛАЙТБОКС --- */
 .lightbox { position: fixed; inset: 0; z-index: 1000; background: rgba(0, 0, 0, 0.95); display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s ease; }
 .lightbox.open { opacity: 1; visibility: visible; }
 .lb-content { max-width: 90%; max-height: 80vh; border-radius: 8px; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
