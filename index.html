@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой сайт — услуги и преимущества</title>
+    <meta name="description" content="Лендинг: услуги, преимущества и форма заявки.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container header__inner">
+            <a class="logo" href="#">Мой сайт</a>
+
+            <button class="burger" data-burger aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="nav" data-nav>
+                <a href="#services">Услуги</a>
+                <a href="#about">О нас</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Первый экран -->
+    <section class="hero">
+        <div class="container hero__inner">
+            <div class="hero__text">
+                <h1>Услуги под ключ с гарантией</h1>
+                <p>Фиксированная цена, сроки по договору и отчёт каждый день.</p>
+                <a class="btn" href="#contacts">Получить расчёт</a>
+            </div>
+
+            <div class="hero__image">
+                <img src="assets/img/hero.jpg" alt="Процесс работы">
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section__title">Услуги</h2>
+
+            <div class="cards">
+                <div class="card">
+                    <h3>Услуга №1</h3>
+                    <p>Работа под ключ: от сметы до сдачи объекта.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Услуга №2</h3>
+                    <p>Индивидуальный проект и авторский надзор.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Услуга №3</h3>
+                    <p>Обслуживание и гарантия 2 года.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section id="about" class="section section--gray">
+        <div class="container">
+            <h2 class="section__title">Почему выбирают нас</h2>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature__num">01</div>
+                    <h3>Фиксированная цена</h3>
+                    <p>Смета утверждается до начала работ и не меняется.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature__num">02</div>
+                    <h3>Сроки по договору</h3>
+                    <p>За каждый день просрочки — компенсация.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature__num">03</div>
+                    <h3>Гарантия 2 года</h3>
+                    <p>Бесплатно устраняем любые замечания.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature__num">04</div>
+                    <h3>Отчёт каждый день</h3>
+                    <p>Присылаем фото и видео с объекта.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма заявки -->
+    <section id="contacts" class="section section--dark">
+        <div class="container">
+            <h2 class="section__title">Получить расчёт</h2>
+
+            <p class="section__subtitle">
+                Оставьте контакты — перезвоним в течение 15 минут.
+            </p>
+
+            <form class="form" data-form>
+                <label class="form__label">
+                    Ваше имя
+                    <input type="text" name="name" required placeholder="Иван">
+                </label>
+
+                <label class="form__label">
+                    Телефон
+                    <input type="tel" name="phone" required placeholder="+7 (999) 000-00-00">
+                </label>
+
+                <button class="btn" type="submit">Отправить заявку</button>
+
+                <p class="form__message" data-form-message></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <p>© 2026 Мой сайт</p>
+
+            <p>
+                <a href="tel:+79990000000">+7 (999) 000-00-00</a>
+                <a href="mailto:info@mysite.ru">info@mysite.ru</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
