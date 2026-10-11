@@ -7,6 +7,7 @@ if (burger && nav) {
         nav.classList.toggle("is-open");
     });
 
+    // Закрывать меню при клике на ссылку
     nav.querySelectorAll("a").forEach((link) => {
         link.addEventListener("click", () => {
             nav.classList.remove("is-open");
@@ -27,13 +28,19 @@ if (form && message) {
         const phone = (data.get("phone") || "").toString().trim();
 
         if (!name || !phone) {
-            message.textContent = "Заполните все поля.";
+            message.textContent = "Пожалуйста, заполните все поля.";
             message.className = "form__message form__message--error";
             return;
         }
 
-        message.textContent = "Заявка отправлена! Мы свяжемся с вами.";
+        // Имитация успешной отправки
+        message.textContent = "Заявка принята! Менеджер свяжется с вами.";
         message.className = "form__message form__message--ok";
         form.reset();
+        
+        // Через 3 секунды убираем сообщение
+        setTimeout(() => {
+            message.textContent = "";
+        }, 3000);
     });
 }

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой сайт — услуги и преимущества</title>
-    <meta name="description" content="Лендинг: услуги, преимущества и форма заявки.">
+    <title>MASTER HOME — Ремонт и отделка под ключ</title>
+    <meta name="description" content="Премиальный ремонт квартир и домов. Фиксированная цена, гарантия 2 года.">
 
     <!-- Иконки сайта -->
     <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
@@ -24,7 +24,10 @@
     <!-- Шапка -->
     <header class="header">
         <div class="container header__inner">
-            <a class="logo" href="#">Мой сайт</a>
+            <!-- Логотип с анимацией -->
+            <a class="logo logo--animated" href="#">
+                MASTER<span>HOME</span>
+            </a>
 
             <button class="burger" data-burger aria-label="Открыть меню">
                 <span></span>
@@ -34,7 +37,7 @@
 
             <nav class="nav" data-nav>
                 <a href="#services">Услуги</a>
-                <a href="#about">О нас</a>
+                <a href="#reviews">Отзывы</a>
                 <a href="#contacts">Контакты</a>
             </nav>
         </div>
@@ -46,64 +49,112 @@
         <!-- Первый экран -->
         <section class="hero glass">
             <div class="container hero__content">
-                <h1>Услуги под ключ<br>с гарантией</h1>
-                <p>Фиксированная цена, сроки по договору и отчёт каждый день.</p>
-                <a class="btn" href="#contacts">Получить расчёт</a>
+                <h1 class="hero-title">Ремонт вашей мечты<br><span class="highlight-text">под ключ</span></h1>
+                <p>Фиксированная смета, дизайн-проект в подарок и сдача объекта точно в срок.</p>
+                <a class="btn btn-magnetic" href="#contacts">Рассчитать стоимость</a>
             </div>
         </section>
 
         <!-- Услуги -->
         <section id="services" class="glass">
             <div class="container">
-                <h2 class="section__title">Услуги</h2>
+                <h2 class="section__title">Наши услуги</h2>
 
                 <div class="cards">
-                    <div class="card card--glass">
-                        <h3>Услуга №1</h3>
-                        <p>Работа под ключ: от сметы до сдачи объекта.</p>
-                    </div>
+                    <!-- Карточка 1 -->
+                    <article class="service-card group">
+                        <div class="service-card__glow"></div>
+                        <h3>Косметический ремонт</h3>
+                        <p>Обновление стен, полов и потолков. Идеально для быстрой сдачи квартиры.</p>
+                        <ul class="service-list">
+                            <li>Поклейка обоев / покраска</li>
+                            <li>Замена ламината</li>
+                            <li>Натяжные потолки</li>
+                        </ul>
+                        <button class="card-btn">Подробнее</button>
+                    </article>
 
-                    <div class="card card--glass">
-                        <h3>Услуга №2</h3>
-                        <p>Индивидуальный проект и авторский надзор.</p>
-                    </div>
+                    <!-- Карточка 2 -->
+                    <article class="service-card group active-demo">
+                        <div class="service-card__glow"></div>
+                        <h3>Капитальный ремонт</h3>
+                        <p>Полная замена коммуникаций, выравнивание стен, черновая отделка.</p>
+                        <ul class="service-list">
+                            <li>Электрика и сантехника</li>
+                            <li>Штукатурка и стяжка</li>
+                            <li>Черновая разводка</li>
+                        </ul>
+                        <button class="card-btn">Выбрать пакет</button>
+                    </article>
 
-                    <div class="card card--glass">
-                        <h3>Услуга №3</h3>
-                        <p>Обслуживание и гарантия 2 года.</p>
+                    <!-- Карточка 3 -->
+                    <article class="service-card group">
+                        <div class="service-card__glow"></div>
+                        <h3>Дизайнерский ремонт</h3>
+                        <p>Реализация сложных проектов с авторским надзором архитектора.</p>
+                        <ul class="service-list">
+                            <li>Индивидуальный проект</li>
+                            <li>Подбор мебели и света</li>
+                            <li>Комплектация объектом</li>
+                        </ul>
+                        <button class="card-btn">Обсудить проект</button>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Преимущества (исправляем hover) -->
+        <section id="about" class="glass">
+            <div class="container">
+                <h2 class="section__title">Почему выбирают нас</h2>
+
+                <div class="features-grid">
+                    <div class="feature-item feature-hover">
+                        <div class="feature-num">01</div>
+                        <h3>Честная смета</h3>
+                        <p>Цена фиксируется в договоре. Никаких доплат «по ходу дела».</p>
+                    </div>
+                    <div class="feature-item feature-hover">
+                        <div class="feature-num">02</div>
+                        <h3>Гарантия 2 года</h3>
+                        <p>Бесплатно устраняем любые недочеты после сдачи объекта.</p>
+                    </div>
+                    <div class="feature-item feature-hover">
+                        <div class="feature-num">03</div>
+                        <h3>Фотоотчет ежедневно</h3>
+                        <p>Вы видите прогресс работ каждый вечер в мессенджере.</p>
+                    </div>
+                    <div class="feature-item feature-hover">
+                        <div class="feature-num">04</div>
+                        <h3>Свои бригады</h3>
+                        <p>Не нанимаем случайных людей. Только проверенные мастера.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Преимущества -->
-        <section id="about" class="glass">
+        <!-- НОВАЯ СЕКЦИЯ: Отзывы -->
+        <section id="reviews" class="glass">
             <div class="container">
-                <h2 class="section__title">Почему выбирают нас</h2>
-
-                <div class="features">
-                    <div class="feature feature--glass">
-                        <div class="feature__num">01</div>
-                        <h3>Фиксированная цена</h3>
-                        <p>Смета утверждается до начала работ и не меняется.</p>
+                <h2 class="section__title">Отзывы клиентов</h2>
+                
+                <div class="reviews-slider">
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p>«Сделали капитальный ремонт двушки за 3 месяца. Все четко по срокам, мусор вывозили сами. Спасибо!»</p>
+                        <div class="author">— Анна К., ЖК «Северный»</div>
                     </div>
 
-                    <div class="feature feature--glass">
-                        <div class="feature__num">02</div>
-                        <h3>Сроки по договору</h3>
-                        <p>За каждый день просрочки — компенсация.</p>
+                    <div class="review-card">
+                        <div class="stars">★★★★★</div>
+                        <p>«Искали команду для дизайнерского ремонта. Ребята помогли с закупкой материалов и сэкономили нам бюджет.»</p>
+                        <div class="author">— Дмитрий В., частный дом</div>
                     </div>
-
-                    <div class="feature feature--glass">
-                        <div class="feature__num">03</div>
-                        <h3>Гарантия 2 года</h3>
-                        <p>Бесплатно устраняем любые замечания.</p>
-                    </div>
-
-                    <div class="feature feature--glass">
-                        <div class="feature__num">04</div>
-                        <h3>Отчёт каждый день</h3>
-                        <p>Присылаем фото и видео с объекта.</p>
+                    
+                     <div class="review-card">
+                        <div class="stars">★★★★☆</div>
+                        <p>«Хорошая бригада, работают аккуратно. Были небольшие задержки с поставкой плитки, но решили вопрос быстро.»</p>
+                        <div class="author">— Сергей П., офис</div>
                     </div>
                 </div>
             </div>
@@ -112,25 +163,21 @@
         <!-- Форма заявки -->
         <section id="contacts" class="glass">
             <div class="container">
-                <h2 class="section__title">Получить расчёт</h2>
-
-                <p class="section__subtitle">
-                    Оставьте контакты — перезвоним в течение 15 минут.
-                </p>
+                <h2 class="section__title">Оставить заявку</h2>
+                <p class="section__subtitle">Перезвоним в течение 15 минут и запишем на бесплатный замер.</p>
 
                 <form class="form" data-form>
                     <label class="form__label">
                         Ваше имя
-                        <input type="text" name="name" required placeholder="Иван">
+                        <input type="text" name="name" required placeholder="Как к вам обращаться?">
                     </label>
 
                     <label class="form__label">
                         Телефон
-                        <input type="tel" name="phone" required placeholder="+7 (999) 000-00-00">
+                        <input type="tel" name="phone" required placeholder="+7 (___) ___-__-__">
                     </label>
 
-                    <button class="btn" type="submit">Отправить заявку</button>
-
+                    <button class="btn btn-submit" type="submit">Отправить заявку</button>
                     <p class="form__message" data-form-message></p>
                 </form>
             </div>
@@ -139,11 +186,9 @@
         <!-- Подвал -->
         <footer class="footer">
             <div class="container footer__inner">
-                <p>© 2026 Мой сайт</p>
-
+                <p>© 2026 MASTER HOME. Все права защищены.</p>
                 <p>
                     <a href="tel:+79990000000">+7 (999) 000-00-00</a>
-                    <a href="mailto:info@mysite.ru">info@mysite.ru</a>
                 </p>
             </div>
         </footer>
