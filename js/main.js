@@ -41,14 +41,14 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (btn && details) {
             btn.addEventListener("click", (e) => {
-                e.preventDefault(); // Предотвращаем переход, если это ссылка
+                e.preventDefault(); 
                 
-                // Закрываем другие открытые карточки (опционально, для эффекта "один за раз")
+                // Закрываем другие открытые карточки
                 serviceCards.forEach(otherCard => {
                     if (otherCard !== card && otherCard.classList.contains("active")) {
                         otherCard.classList.remove("active");
                         const otherBtn = otherCard.querySelector(".toggle-details");
-                        if(otherBtn) otherBtn.textContent = "Подробнее о пакете";
+                        if(otherBtn) otherBtn.textContent = "Подробнее о пакете ▼";
                     }
                 });
 
@@ -66,7 +66,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // 3. Форма заявки
+    // 3. Маска для телефона (+7 (XXX) XXX-XX-XX)
+    const phoneInput = document.getElementById("phone-input");
+    
+    if (phoneInput) {
+        phoneInput.addEventListener("input", (e) => {
+            let value = e.target.value.replace(/\D/g, ""); // Оставляем только цифры
+            
+            // Если начинается с 8, заменяем на 7
+            if (value.startsWith("8")) {
+                value = "7" + value.slice(1);
+            }
+            
+            // Принудительно добавляем 7 в начало, если нет
+            if (!value.startsWith("7")) {
+                value = "7" + value;
+            }
+
+            let formattedValue = "+7";
+            
+            if (value.length > 1) {
+                formattedValue += " (" + value.substring(1, 4);
+            }
+            if (value.length >= 5) {
+                formattedValue += ") " + value.substring(4, 7);
+            }
+            if (value.length >= 8) {
+                formattedValue += "-" + value.substring(7, 9);
+            }
+            if (value.length >= 10) {
+                formattedValue += "-" + value.substring(9, 11);
+            }
+
+            e.target.value = formattedValue;
+        });
+    }
+
+
+    // 4. Форма заявки
     const form = document.querySelector("[data-form]");
     const message = document.querySelector("[data-form-message]");
 
@@ -83,6 +120,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 message.textContent = "Пожалуйста, заполните имя и телефон.";
                 message.className = "form__message form__message--error";
                 return;
+            }
+
+            // Проверка длины номера (минимум 11 символов включая +7)
+            if (phone.replace(/\D/g, "").length < 11) {
+                 message.textContent = "Введите полный номер телефона.";
+                 message.className = "form__message form__message--error";
+                 return;
             }
 
             // Имитация успешной отправки

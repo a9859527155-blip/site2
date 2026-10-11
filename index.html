@@ -24,18 +24,12 @@
     <!-- Шапка -->
     <header class="header">
         <div class="container header__inner">
-            <!-- Новый логотип RENOVA -->
+            <!-- Логотип слева -->
             <a class="logo logo--animated" href="#">
                 RENO<span>VA</span>
             </a>
 
-            <button class="burger" data-burger aria-label="Открыть меню">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <!-- Меню (на десктопе горизонтальное, на мобилке - drawer) -->
+            <!-- Меню справа (десктоп) / Drawer (мобилка) -->
             <nav class="nav menu-drawer" data-nav>
                 <div class="menu-close-btn" data-menu-close>&times;</div>
                 
@@ -48,6 +42,13 @@
                     <small>Ежедневно 9:00–21:00</small>
                 </div>
             </nav>
+
+            <!-- Бургер (только мобилка, крайний правый угол) -->
+            <button class="burger" data-burger aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
@@ -73,7 +74,7 @@
 
                 <div class="cards">
                     <!-- Карточка 1 -->
-                    <article class="service-card group">
+                    <article class="service-card group equal-height">
                         <div class="service-card__glow"></div>
                         
                         <div class="card-header">
@@ -95,11 +96,11 @@
                             <p class="note">Срок выполнения: 14–21 день.</p>
                         </div>
 
-                        <button class="card-btn toggle-details">Подробнее о пакете</button>
+                        <button class="card-btn toggle-details">Подробнее о пакете ▼</button>
                     </article>
 
                     <!-- Карточка 2 -->
-                    <article class="service-card group featured">
+                    <article class="service-card group featured equal-height">
                         <div class="badge">Хит продаж</div>
                         <div class="service-card__glow"></div>
                         
@@ -121,11 +122,11 @@
                             <p class="note">Срок выполнения: 45–60 дней.</p>
                         </div>
 
-                        <button class="card-btn toggle-details">Выбрать этот пакет</button>
+                        <button class="card-btn toggle-details">Выбрать этот пакет ▼</button>
                     </article>
 
                     <!-- Карточка 3 -->
-                    <article class="service-card group">
+                    <article class="service-card group equal-height">
                         <div class="service-card__glow"></div>
                         
                         <div class="card-header">
@@ -146,7 +147,7 @@
                             <p class="note">Срок реализации: от 3 месяцев.</p>
                         </div>
 
-                        <button class="card-btn toggle-details">Обсудить проект</button>
+                        <button class="card-btn toggle-details">Обсудить проект ▼</button>
                     </article>
                 </div>
             </div>
@@ -241,7 +242,8 @@
 
                         <label class="form__label">
                             Телефон
-                            <input type="tel" name="phone" required placeholder="+7 (___) ___-__-__">
+                            <!-- Маска ввода будет применена через JS -->
+                            <input type="tel" name="phone" id="phone-input" required placeholder="+7 (___) ___-__-__">
                         </label>
 
                         <label class="form__label">

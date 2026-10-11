@@ -75,7 +75,7 @@ img {
     padding-top: 80px;
 }
 
-/* --- ШАПКА И ЛОГОТИП --- */
+/* --- ШАПКА (ФИКС ПОЗИЦИЙ) --- */
 .header {
     position: fixed;
     top: 0;
@@ -84,7 +84,7 @@ img {
     height: 70px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* Лого слева, остальное справа */
     padding: 0 40px;
     background: rgba(11, 17, 32, 0.6);
     backdrop-filter: blur(10px);
@@ -100,6 +100,7 @@ img {
     text-decoration: none;
     display: flex;
     gap: 2px;
+    order: 1; /* Гарантируем первое место */
 }
 
 .logo span {
@@ -118,6 +119,7 @@ img {
 .nav {
     display: flex;
     gap: 30px;
+    order: 2; /* Второе место после лого */
 }
 
 .nav a {
@@ -150,6 +152,7 @@ img {
 
 .burger {
     display: none;
+    order: 3; /* Третье место (справа) */
 }
 
 .menu-close-btn {
@@ -258,11 +261,12 @@ img {
     left: 100%;
 }
 
-/* --- УСЛУГИ (SERVICE CARDS WITH ACCORDION) --- */
+/* --- УСЛУГИ (EQUAL HEIGHT GRID) --- */
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
+    align-items: stretch; /* Растягиваем элементы по высоте строки */
 }
 
 .service-card {
@@ -275,7 +279,7 @@ img {
     transition: all 0.4s ease;
     display: flex;
     flex-direction: column;
-    height: fit-content; /* Меняем с 100% на fit-content для корректной высоты */
+    height: 100%; /* Занимаем всю доступную высоту ячейки Grid */
 }
 
 .service-card.featured {
@@ -367,7 +371,7 @@ img {
 }
 
 .service-card.active .service-details {
-    max-height: 300px; /* Достаточная высота для контента */
+    max-height: 300px; 
     opacity: 1;
     margin-bottom: 20px;
 }
@@ -504,7 +508,7 @@ img {
     font-weight: 600;
 }
 
-/* --- СЕКЦИЯ КОНТАКТОВ (NEW DESIGN) --- */
+/* --- СЕКЦИЯ КОНТАКТОВ --- */
 .contact-section {
     padding: 50px 40px;
 }
